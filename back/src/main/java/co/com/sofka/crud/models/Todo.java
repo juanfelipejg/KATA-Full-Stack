@@ -1,24 +1,28 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Todo {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "Name is mandatory")
+    @Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
     private String name;
     private boolean completed;
     @ManyToOne
-    private List groupListId;
+    private Group groupGroupId;
 
 
-    public List getGroupListId() {return groupListId;}
+    public Group getGroupListId() {return groupGroupId;}
 
-    public void setGroupListId(List groupListId) {this.groupListId = groupListId;}
+    public void setGroupListId(Group groupGroupId) {this.groupGroupId = groupGroupId;}
 
     public Long getId() {
         return id;

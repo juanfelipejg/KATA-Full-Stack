@@ -1,15 +1,19 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
-public class List {
+public class Group {
 
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "Name is mandatory")
+    @Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
     private String name;
 
     public Long getId() {
