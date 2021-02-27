@@ -1,10 +1,11 @@
 package co.com.sofka.crud.services;
 
+import co.com.sofka.crud.assembler.Assembler;
+import co.com.sofka.crud.dto.TodoDTO;
 import co.com.sofka.crud.models.Todo;
 import co.com.sofka.crud.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.validation.Valid;
 
 @Service
@@ -17,7 +18,7 @@ public class TodoService {
         return repository.findAll();
     }
 
-    public Todo save(@Valid Todo todo){return repository.save(todo);}
+    public Todo save(Todo todo){return repository.save(todo);}
 
     public void delete(Long id){
         repository.delete(get(id));
@@ -25,6 +26,18 @@ public class TodoService {
 
     public Todo get(Long id){
          return repository.findById(id).orElseThrow();
+    }
+
+    public TodoDTO getDTO(Long id){
+        try{
+            Todo todo = get(id);
+            return Assembler.makeTodoDTO(todo);
+        }
+        catch (Exception e){
+            System.out.println("+++++++++++++++++++++++++" + e);
+            return null;
+        }
+        //
     }
 
 }

@@ -1,20 +1,24 @@
 package co.com.sofka.crud.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Group {
+public class Category {
 
     @Id
     @GeneratedValue
-    private Long id;
+    Long id;
+
     @NotBlank(message = "Name is mandatory")
     @Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
-    private String name;
+    String name;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Todo> todos = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -30,5 +34,13 @@ public class Group {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Todo> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(List<Todo> todos) {
+        this.todos = todos;
     }
 }

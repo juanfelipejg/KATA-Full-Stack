@@ -12,17 +12,15 @@ public class Todo {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotBlank(message = "Name is mandatory")
     @Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
     private String name;
+
     private boolean completed;
-    @ManyToOne
-    private Group groupGroupId;
 
-
-    public Group getGroupListId() {return groupGroupId;}
-
-    public void setGroupListId(Group groupGroupId) {this.groupGroupId = groupGroupId;}
+    @ManyToOne()
+    private Category category;
 
     public Long getId() {
         return id;
@@ -47,4 +45,8 @@ public class Todo {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    public Category getGroup() {return category;}
+
+    public void setGroup(Category category) {this.category = category;}
 }
