@@ -29,15 +29,10 @@ public class TodoService {
     }
 
     public TodoDTO getDTO(Long id){
-        try{
+
             Todo todo = get(id);
             return Assembler.makeTodoDTO(todo);
-        }
-        catch (Exception e){
-            System.out.println("+++++++++++++++++++++++++" + e);
-            return null;
-        }
-        //
+
     }
 
 }

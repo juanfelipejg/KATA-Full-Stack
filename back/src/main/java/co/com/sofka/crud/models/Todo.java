@@ -14,7 +14,7 @@ public class Todo {
     private Long id;
 
     @NotBlank(message = "Name is mandatory")
-    @Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
+    @Pattern(regexp="^[a-zA-Z\\s]*$",message = "Invalid Input")
     private String name;
 
     private boolean completed;
@@ -46,7 +46,11 @@ public class Todo {
         this.completed = completed;
     }
 
-    public Category getGroup() {return category;}
+    public Category getCategory() {
+        return category;
+    }
 
-    public void setGroup(Category category) {this.category = category;}
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }

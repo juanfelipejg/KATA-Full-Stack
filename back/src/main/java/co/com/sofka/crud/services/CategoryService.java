@@ -1,16 +1,16 @@
 package co.com.sofka.crud.services;
 
 import co.com.sofka.crud.models.Category;
-import co.com.sofka.crud.repositories.GroupRepository;
+import co.com.sofka.crud.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 
 @Service
-public class GroupService {
+public class CategoryService {
 
     @Autowired
-    private GroupRepository repository;
+    private CategoryRepository repository;
 
     public Iterable<Category> list(){
         return repository.findAll();

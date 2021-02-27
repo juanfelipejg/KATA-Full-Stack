@@ -1,6 +1,6 @@
 package co.com.sofka.crud.assembler;
 
-import co.com.sofka.crud.dto.GroupDTO;
+import co.com.sofka.crud.dto.CategoryDTO;
 import co.com.sofka.crud.dto.TodoDTO;
 import co.com.sofka.crud.models.Category;
 import co.com.sofka.crud.models.Todo;
@@ -22,12 +22,12 @@ public class Assembler {
         return todoDTO;
     }
 
-    public static GroupDTO makeGroupDTO(Category category){
+    public static CategoryDTO makeGroupDTO(Category category){
 
-        GroupDTO groupDTO = new GroupDTO();
+        CategoryDTO categoryDTO = new CategoryDTO();
 
-        groupDTO.setId(category.getId());
-        groupDTO.setName(category.getName());
+        categoryDTO.setId(category.getId());
+        categoryDTO.setName(category.getName());
         List<TodoDTO> todosDTO = new ArrayList<>();
 
         for(Todo todo: category.getTodos()){
@@ -35,8 +35,8 @@ public class Assembler {
             todosDTO.add(makeTodoDTO(todo));
         }
 
-        groupDTO.setTodos(todosDTO);
+        categoryDTO.setTodos(todosDTO);
 
-        return groupDTO;
+        return categoryDTO;
     }
 }

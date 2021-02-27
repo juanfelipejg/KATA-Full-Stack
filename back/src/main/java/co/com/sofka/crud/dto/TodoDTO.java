@@ -5,8 +5,8 @@ public class TodoDTO {
     private Long idTodo;
     private String nameTodo;
     private boolean completed;
-    private Long groupId;
-    private String groupName;
+    private Long categoryId;
+    private String categoryName;
 
     public Long getIdTodo() {
         return idTodo;
@@ -32,20 +32,11 @@ public class TodoDTO {
         this.completed = completed;
     }
 
-    public Long getGroupId() {
-        return groupId;
-    }
+    public Long getCategoryId() {return categoryId;}
 
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
-    }
+    public void setCategoryId(Long categoryId) {this.categoryId = categoryId;}
 
-    public String getGroupName() {
-        return groupName;
-    }
+    public String getCategoryName() {return categoryName;}
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
+    public void setCategoryName(String categoryName) {this.categoryName = categoryName;}
 }

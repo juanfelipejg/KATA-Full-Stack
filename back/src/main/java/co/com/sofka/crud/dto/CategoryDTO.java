@@ -3,7 +3,7 @@ package co.com.sofka.crud.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupDTO {
+public class CategoryDTO {
 
     private String name;
     private Long id;

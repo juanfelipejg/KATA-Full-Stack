@@ -11,14 +11,14 @@ public class Category {
 
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     @NotBlank(message = "Name is mandatory")
-    @Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
-    String name;
+    @Pattern(regexp="^[a-zA-Z\\s]*$", message = "Invalid Input")
+    private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Todo> todos = new ArrayList<>();
+    private List<Todo> todos = new ArrayList<>();
 
     public Long getId() {
         return id;
