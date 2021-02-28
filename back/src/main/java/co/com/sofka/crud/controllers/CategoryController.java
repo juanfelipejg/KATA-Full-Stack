@@ -1,6 +1,8 @@
 package co.com.sofka.crud.controllers;
 
+import co.com.sofka.crud.dto.CategoryDTO;
 import co.com.sofka.crud.dto.CategoryTodoDTO;
+import co.com.sofka.crud.dto.MainDTO;
 import co.com.sofka.crud.models.Category;
 import co.com.sofka.crud.models.Todo;
 import co.com.sofka.crud.services.CategoryService;
@@ -22,19 +24,19 @@ public class CategoryController {
     private CategoryService service;
 
     @GetMapping(value = "api/categories")
-    public Iterable<Category> list(){
+    public Iterable<CategoryDTO> list(){
         return service.list();
     }
 
     @PostMapping(value = "api/category")
-    public Category save(@Valid @RequestBody Category category){
-        return service.save(category);
+    public Category save(@Valid @RequestBody CategoryDTO categoryDTO){
+        return service.save(categoryDTO);
     }
 
     @PutMapping(value = "api/category")
-    public Category update(@RequestBody Category category){
-        if(category.getId() != null){
-            return service.save(category);
+    public Category update(@RequestBody CategoryDTO categoryDTO){
+        if(categoryDTO.getId() != null){
+            return service.save(categoryDTO);
         }
         throw new RuntimeException("No existe el id para actualizar");
     }
@@ -45,9 +47,12 @@ public class CategoryController {
     }
 
     @GetMapping(value = "api/{id}/category")
-    public Category get(@PathVariable("id") Long id){
-        return service.get(id);
+    public CategoryDTO get(@PathVariable("id") Long id){
+        return service.getDTO(id);
     }
+
+    @GetMapping("api/showAll")
+    public MainDTO listInterfaz(){return service.showAll();}
 
     @PostMapping(value = "api/{id}/addTodo")
     public Todo addTodo(@Valid @RequestBody CategoryTodoDTO categoryTodoDTO){

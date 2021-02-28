@@ -1,9 +1,9 @@
 package co.com.sofka.crud.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -19,7 +19,8 @@ public class Todo {
 
     private boolean completed;
 
-    @ManyToOne()
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;
 
     public Long getId() {

@@ -17,9 +17,6 @@ public class Category {
     @Pattern(regexp="^[a-zA-Z\\s]*$", message = "Invalid Input")
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Todo> todos = new ArrayList<>();
-
     public Long getId() {
         return id;
     }
@@ -36,11 +33,4 @@ public class Category {
         this.name = name;
     }
 
-    public List<Todo> getTodos() {
-        return todos;
-    }
-
-    public void setTodos(List<Todo> todos) {
-        this.todos = todos;
-    }
 }

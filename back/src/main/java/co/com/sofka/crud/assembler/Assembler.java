@@ -6,19 +6,15 @@ import co.com.sofka.crud.dto.TodoDTO;
 import co.com.sofka.crud.models.Category;
 import co.com.sofka.crud.models.Todo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Assembler {
 
     public static TodoDTO makeTodoDTO (Todo todo){
         TodoDTO todoDTO = new TodoDTO();
 
-        todoDTO.setIdTodo(todo.getId());
-        todoDTO.setNameTodo(todo.getName());
+        todoDTO.setId(todo.getId());
+        todoDTO.setName(todo.getName());
         todoDTO.setCompleted(todo.isCompleted());
-        /*todoDTO.setGroupId(todo.getGroup().getId());
-        todoDTO.setGroupName(todo.getGroup().getName());*/
+        todoDTO.setCategoryId(todo.getCategory().getId());
 
         return todoDTO;
     }
@@ -31,20 +27,27 @@ public class Assembler {
         return todo;
     }
 
-    public static CategoryDTO makeGroupDTO(Category category){
+    public static Todo makeTodo(TodoDTO todoDTO){
+        Todo todo = new Todo();
+        todo.setName(todoDTO.getName());
+        todo.setCompleted(todoDTO.isCompleted());
+
+        return todo;
+    }
+
+    public static Category makeCategory(CategoryDTO categoryDTO){
+        Category category = new Category();
+        category.setId(categoryDTO.getId());
+        category.setName(categoryDTO.getName());
+
+        return category;
+    }
+
+    public static CategoryDTO makeCategoryDTO(Category category){
 
         CategoryDTO categoryDTO = new CategoryDTO();
-
         categoryDTO.setId(category.getId());
         categoryDTO.setName(category.getName());
-        List<TodoDTO> todosDTO = new ArrayList<>();
-
-        for(Todo todo: category.getTodos()){
-
-            todosDTO.add(makeTodoDTO(todo));
-        }
-
-        categoryDTO.setTodos(todosDTO);
 
         return categoryDTO;
     }
