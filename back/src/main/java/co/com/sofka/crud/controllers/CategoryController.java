@@ -1,6 +1,8 @@
 package co.com.sofka.crud.controllers;
 
+import co.com.sofka.crud.dto.CategoryTodoDTO;
 import co.com.sofka.crud.models.Category;
+import co.com.sofka.crud.models.Todo;
 import co.com.sofka.crud.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +47,11 @@ public class CategoryController {
     @GetMapping(value = "api/{id}/category")
     public Category get(@PathVariable("id") Long id){
         return service.get(id);
+    }
+
+    @PostMapping(value = "api/{id}/addTodo")
+    public Todo addTodo(@Valid @RequestBody CategoryTodoDTO categoryTodoDTO){
+        return service.addTodo(categoryTodoDTO);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
