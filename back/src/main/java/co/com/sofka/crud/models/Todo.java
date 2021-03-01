@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 @Entity
 public class Todo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "Name is mandatory")
@@ -19,7 +19,7 @@ public class Todo {
 
     private boolean completed;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;
 
