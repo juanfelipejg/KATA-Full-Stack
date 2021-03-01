@@ -1,3 +1,4 @@
+import React from 'react'
 import CategoryForm from './category/CategoryForm'
 import { StoreProvider } from './storeProvider'
 import CategoryList from './category/CategoryList'
